@@ -8,7 +8,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     name: Run Type Check & Linters
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(vars.USE_HOSTED_RUNNERS == 'true' && '"ubuntu-latest"' || '"jog"') }}
 
     steps:
       - name: Checkout repository
